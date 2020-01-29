@@ -15,6 +15,7 @@ const Login = ({login}) => {
     const onSubmit = async event =>  {
         event.preventDefault();    
             console.log(formData);
+            login(email,password);
             try {
               /*   const config = {
                     headers:{
