@@ -12,7 +12,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const db = config.get('jwtSecret');
 // @route         Get api/auth
-// @desc          Test route
+// @desc          Get the user authenticated
 // @access        Public
 
 router.get('/', auth, async (req, res) => {
@@ -29,10 +29,8 @@ router.get('/', auth, async (req, res) => {
       res.status(500).send('Error de servidor');
    }
 });
-
-
 // @route         POST api/user
-// @desc          Registrar Usuario
+// @desc          LOgin Usuario
 // @access        Public
 router.post('/', [
    // valida rutas

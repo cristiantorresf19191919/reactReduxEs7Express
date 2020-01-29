@@ -39,7 +39,11 @@ const Register = ({setAlert, register}) => {
                              />
                     </div>
                     <div className="form-group">
-                        <input type="email" onChange={ (e) => onChange(e)} placeholder="Email Address" name="email" />
+                        <input 
+                            type="email"
+                            onChange={ (e) => onChange(e)} 
+                            placeholder="Email Address"
+                            name="email" />
                         <small className="form-text"
                         >Este sitio usa gravatar, si quieres una foto en tu perfil usa gravatar</small>
                     </div>

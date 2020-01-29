@@ -1,4 +1,4 @@
-import { REGISTER_SUCCESS, REGISTER_FAIL, AUTH_ERROR, USE_LOADED } from "../actions/types";
+import { REGISTER_SUCCESS, REGISTER_FAIL, AUTH_ERROR, USER_LOADED, LOGIN_FAILED,LOGIN_SUCCESS } from "../actions/types";
 
 
 const initialState = {
@@ -12,21 +12,24 @@ export default function (state = initialState, action){
     const {type, payload} = action;
     switch(type){
         
-        case USE_LOADED:
+        case USER_LOADED:
             return {
                 ...state,
                 isAuthenticated:true,
                 loading:false,
                 user:payload
             }
-        case REGISTER_SUCCESS:
+            
+            case LOGIN_FAILED:
+                localStorage.clear();
+                return{
+                    ...state,
+                    isAuthenticated:false,
+                    loading:false
+                }
+            case LOGIN_SUCCESS:
+            case REGISTER_SUCCESS:
             localStorage.setItem('token',payload.token);
-            console.log('estoy dentro del auth reducer y quiero sber que carajos es el payload y el state');
-            console.log('state');
-            console.log(state);
-            console.log('payload');
-            // console.log({ token: payload.token })
-            console.log({...payload});
             return {
                 ...state,
                 ...payload,
@@ -35,6 +38,7 @@ export default function (state = initialState, action){
             }
         case REGISTER_FAIL:
         case AUTH_ERROR:
+        case LOGIN_FAILED:
             localStorage.removeItem('token');
             return {
                 ...state,
