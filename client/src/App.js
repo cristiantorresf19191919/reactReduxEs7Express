@@ -10,6 +10,8 @@ import store from './store';
 import Alert from './components/layout/Alert';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utilities/setAuthToken';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 
 const App = () => {
@@ -34,6 +36,7 @@ const App = () => {
 				<Switch>
 						<Route exact path='/login' component={Login} />
 						<Route exact path='/register' component={Register} />
+						<PrivateRoute exact path='/dashboard' component={Dashboard} />
 				</Switch>
 				</section>
 			</Fragment>

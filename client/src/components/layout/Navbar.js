@@ -49,7 +49,7 @@ const mapStateToProps = state => ({ auth: state.auth });
 
 Navbar.propTypes = {
   auth: PropTypes.object.isRequired,
-  isloggedIn: PropTypes.bool.isRequired
+  isloggedIn: PropTypes.bool
 };
 
 export default connect(mapStateToProps, { logOut })(Navbar);
