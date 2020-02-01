@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-const Register = ({setAlert, register}) => {
+const Register = ({setAlert, register,isAuthenticated}) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -26,6 +26,11 @@ const Register = ({setAlert, register}) => {
         ...formData,
         [event.target.name]: event.target.value
     }) 
+
+    if (isAuthenticated){
+        return <Redirect to='/Dashboard' />
+    }
+
     return (
         <Fragment>            
                 <h1 className="large text-primary">Registrate</h1>
@@ -37,12 +42,14 @@ const Register = ({setAlert, register}) => {
                             value={name}
                             onChange={ (e) => onChange(e) }
                              />
+
                     </div>
                     <div className="form-group">
                         <input 
                             type="email"
-                            onChange={ (e) => onChange(e)} 
+                            onChange={ (e) => onChange(e)}  
                             placeholder="Email Address"
+                            value = {email}
                             name="email" />
                         <small className="form-text"
                         >Este sitio usa gravatar, si quieres una foto en tu perfil usa gravatar</small>
@@ -65,7 +72,7 @@ const Register = ({setAlert, register}) => {
                             onChange={ (e) => onChange(e)}
                         />
                     </div>
-                    <input type="submit" onChange={ (e) => onChange(e)} className="btn btn-primary" value="Register" />
+                    <input type="submit" className="btn btn-primary" value="Register" />
                 </form>
                 <p className="my-1">
                     Ya tienes una cuenta? <Link to='/login'>Inicia Sesion</Link>
@@ -73,8 +80,13 @@ const Register = ({setAlert, register}) => {
         </Fragment>
     )}
 
+    const mapStateToProps = state => ({
+        isAuthenticated : state.auth.isAuthenticated
+    })
+
 Register.propTypes={
     alert: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
+    isAuthenticated : PropTypes.bool
 };
-export default connect(null, {setAlert,register})(Register);
+export default connect(mapStateToProps, {setAlert,register})(Register);

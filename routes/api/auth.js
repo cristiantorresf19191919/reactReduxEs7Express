@@ -47,7 +47,7 @@ router.post('/', [
       email,
       password
    } = req.body;
-   console.log(email, password);
+  
    try {
       // Mirar si el usuario ya existe
       let user = await User.findOne({
