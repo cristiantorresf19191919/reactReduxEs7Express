@@ -12,6 +12,36 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const db = config.get('jwtSecret');
+
+//ver todos los usuarios
+
+router.get('/', async (req,res)=>{
+   const {email,passwordq} = req.query;
+
+   try {
+      const yo = await User.findOne({email:email});  
+   
+       // Encriptar la contraseña
+       console.log(passwordq);
+
+       console.log(passwordq);
+       console.log(passwordq);
+  
+       const salt = await bcrypt.genSalt(10);
+       yo.password = await bcrypt.hash(passwordq, salt);
+       console.log(yo.password);
+     await yo.save();
+      
+
+    res.status(200).json(yo);
+   } catch (error) {
+      console.error(error);
+      
+   }
+   
+});
+
+
 // @route         POST api/user
 // @desc          Registrar Usuario
 // @access        Public
