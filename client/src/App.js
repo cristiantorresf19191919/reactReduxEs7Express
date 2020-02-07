@@ -12,6 +12,8 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utilities/setAuthToken';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
+import Paswtest from './components/auth/Paswtest';
+import CreateProfile from './components/dashboard/profile-form/CreateProfile';
 
 
 const App = () => {
@@ -22,7 +24,7 @@ const App = () => {
 
 	useEffect(() =>{
 		store.dispatch(loadUser());
-	},[]);
+	},[]);		
 
 
 	return (
@@ -34,9 +36,12 @@ const App = () => {
 				<section className="container">				
 				<Alert />
 				<Switch>
+					    <Route exact path='/recovery' component={Paswtest} />
 						<Route exact path='/login' component={Login} />
 						<Route exact path='/register' component={Register} />
 						<PrivateRoute exact path='/dashboard' component={Dashboard} />
+						<PrivateRoute exact path='/create-profile' component={CreateProfile} />
+
 				</Switch>
 				</section>
 			</Fragment>

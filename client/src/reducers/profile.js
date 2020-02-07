@@ -7,7 +7,8 @@ import {
   LOGIN_SUCCESS,
   LOG_OUT,
   GET_PROFILE,
-  PROFILE_ERROR
+  PROFILE_ERROR,
+  CLEAR_PROFILE
 } from "../actions/types";
 
 const initialState = {
@@ -21,6 +22,14 @@ const initialState = {
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+
+    case CLEAR_PROFILE:
+      return {
+        ...state,
+        profile: null,
+        repos: [],
+        loading: false
+      }
     case GET_PROFILE:
       return {
         ...state,

@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { REGISTER_SUCCESS, REGISTER_FAIL, AUTH_ERROR,USER_LOADED,LOGIN_FAILED,LOGIN_SUCCESS, LOG_OUT } from './types';
+import { REGISTER_SUCCESS, REGISTER_FAIL, AUTH_ERROR,USER_LOADED,LOGIN_FAILED,LOGIN_SUCCESS, LOG_OUT, CLEAR_PROFILE } from './types';
 import { setAlert } from './alert';
 import setAuthToken from '../utilities/setAuthToken';
 
 // LOAD USER
 export const loadUser = () => async dispatch => {
     if (localStorage.token){
-        /* Interceptores */ 
+    /* Interceptores */ 
      setAuthToken(localStorage.token);
     }
     try {
@@ -44,6 +44,7 @@ export const register = ({name,email,password}) => async dispatch => {
 
     } catch (error) {
         const errors = error.response.data.errors;
+        
         if (errors){
             /* puedo correr funciones de otra accion */
             errors.forEach(error => dispatch(setAlert(error.msg,'danger')));
@@ -68,12 +69,10 @@ export const login = (email, password) => async dispatch => {
             payload: res.data
         });   
         dispatch(loadUser());      
-    } catch (error) {
-        const errors = error.response.data.errors;
-        if (errors){
-            /* puedo correr funciones de otra accion */
-            errors.forEach(error => dispatch(setAlert(error.msg,'danger')));
-        }
+    } catch (err) {
+        const errors = err.response.data;        
+        dispatch(setAlert(errors.msg,'danger'));      
+        
         dispatch({
             type:LOGIN_FAILED
         })
@@ -82,7 +81,12 @@ export const login = (email, password) => async dispatch => {
 
 
 // logout clear the profile
-export const logOut = () => dispatch => 
+export const logOut = () => dispatch => {
     dispatch({
-        type:LOG_OUT
-    })
+        type:CLEAR_PROFILE
+        });
+        dispatch({
+            type:LOG_OUT
+        });
+}
+    

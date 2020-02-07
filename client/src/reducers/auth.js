@@ -18,15 +18,8 @@ export default function (state = initialState, action){
                 isAuthenticated:true,
                 loading:false,
                 user:payload
-            }
-            
-            case LOGIN_FAILED:
-                localStorage.clear();
-                return{
-                    ...state,
-                    isAuthenticated:false,
-                    loading:false
-                }
+            }            
+       
             case LOGIN_SUCCESS:
             case REGISTER_SUCCESS:
             localStorage.setItem('token',payload.token);

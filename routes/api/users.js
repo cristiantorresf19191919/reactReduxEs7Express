@@ -15,27 +15,28 @@ const db = config.get('jwtSecret');
 
 //ver todos los usuarios
 
-router.get('/', async (req,res)=>{
-   const {email,passwordq} = req.query;
+router.get('/', async (req,res) => {
+   const allUsers = await User.find();
+   res.status(200).json(allUsers);  
+})
 
+
+// change password for testing
+router.get('/change', async (req,res)=>{
+   const {email} = req.query;
+   const passworddq = 'overcome19';
    try {
-      const yo = await User.findOne({email:email});  
-   
-       // Encriptar la contraseña
-       console.log(passwordq);
-
-       console.log(passwordq);
-       console.log(passwordq);
-  
+       const yo = await User.findOne({email:email});  
+       // Encriptar la contraseña  
        const salt = await bcrypt.genSalt(10);
-       yo.password = await bcrypt.hash(passwordq, salt);
-       console.log(yo.password);
-     await yo.save();
-      
+       yo.password = await bcrypt.hash(passworddq, salt);
+
+       await yo.save();
+      res.status(200).send(`contrasena de ${yo.name} cambiada con exito`);
 
     res.status(200).json(yo);
    } catch (error) {
-      console.error(error);
+      res.status(500).send('error de servidor');
       
    }
    

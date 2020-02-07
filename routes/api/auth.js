@@ -21,9 +21,7 @@ router.get('/', auth, async (req, res) => {
       const user = await User.findById(req.user.id)
          .select('-password');
 
-      res.status(200).json({
-         user
-      })
+      res.status(200).json(user)
    } catch (err) {
       console.error(err.message);
       res.status(500).send('Error de servidor');
