@@ -154,6 +154,7 @@
     opacity: 0.9;
     background: var(--light-color);
     color: #333;
+    transition: all .5s ease-in;
   }
   
   .btn-primary,

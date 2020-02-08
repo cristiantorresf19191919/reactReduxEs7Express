@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import {AnimateOnChange} from 'react-animation';
 
   
 
@@ -16,7 +17,9 @@ const Landing = ({isAuthenticated}) => {
              <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1 className="x-large">CRISTIAN SCRIPT NETWORK </h1>
+          <AnimateOnChange    >
+              <h1 className="x-large">CRISTIAN SCRIPT NETWORK </h1>
+          </AnimateOnChange>
           <p className="lead">
             Crea tu Portafolio, comparte post y obten ayude de otros programadores           
           </p>

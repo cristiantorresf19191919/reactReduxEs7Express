@@ -53,12 +53,12 @@ const EditProfile = ({
 		githubusername: loading || !profile.githubusername ? ' ' : profile.githubusername,
 		bio: loading || !profile.bio ? ' ' : profile.bio,
 		twitter: loading || !profile.social ? ' ' : profile.twitter,
-		facebook: loading || !profile.social ? ' ' : profile.facebook,
-		youtube: loading || !profile.social ? ' ' : profile.youtube,
-		linkedin: loading || !profile.social ? ' ' : profile.linkedin,
-		instagram: loading || !profile.social ? ' ' : profile.instagram
+		facebook: loading || !profile.social ? ' ' : profile.social.facebook,
+		youtube: loading || !profile.social ? ' ' : profile.social.youtube,
+		linkedin: loading || !profile.social ? ' ' : profile.social.linkedin,
+		instagram: loading || !profile.social ? ' ' : profile.social.instagram
 	});	
-  }, [])
+  }, [loading])
 
   // cambia valores de los inputs
   const onChange = event => {
@@ -69,16 +69,17 @@ const EditProfile = ({
   };
   const onSubmit = e => {
     e.preventDefault();
-    createProfile(formData, history);
+    createProfile(formData, history, true);
   };
 
   return loading && profile === null ? (
     <Redirect to="/dashboard" />
   ) : (
     <Fragment>
-      <h1 className="large text-primary">Crea tu Perfil</h1>
+      <h1>company = {company}</h1>
+      <h1 className="large text-primary">Edita tu Perfil</h1>
       <p className="lead">
-        <i className="fas fa-user" /> Pon informacion para destacar tu perfil
+        <i className="fas fa-user" /> Cambia informacion para destacar tu perfil
       </p>
       <small>* = campos requeridos</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
