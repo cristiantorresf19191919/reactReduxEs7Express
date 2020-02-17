@@ -309,11 +309,8 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('server error');
-
     }
-
 });
-
 
 // @route         GET api/profile/github/:username
 // @desc          GET User's experience by id

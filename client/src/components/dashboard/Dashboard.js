@@ -5,6 +5,8 @@ import { getCurrentProfile } from "../../actions/profile";
 import Spinner from "../layout/Spinner";
 import { Link } from "react-router-dom";
 import DashboardAction from "./DashboardAction";
+import Experience from "./Experience";
+import Education from "./Education";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -18,23 +20,25 @@ const Dashboard = ({
   return loading && profile === null ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <h1 className="large text-primary">Dashboard</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Welcome {user && user.name}
-      </p>
-      {profile !== null ? (
-        <Fragment>
-        <DashboardAction/>  
-        </Fragment>
-      ) : (
-        <Fragment>
-          <p>No tienes configurado en el momento un Perfil, por favor agrega informacion</p>
-          <Link className='btn btn-primary' to="/create-profile">Agregar Perfil</Link>
-        </Fragment>
-      )}
-    </Fragment>
-  );
+      <Fragment>
+        <h1 className="large text-primary">Dashboard</h1>
+        <p className="lead">
+          <i className="fas fa-user"></i> Welcome {user && user.name}
+        </p>
+        {profile !== null ? (
+          <Fragment>
+            <DashboardAction />
+            <Experience experience={profile.experience}/>
+            <Education education={profile.education} />
+          </Fragment>
+        ) : (
+            <Fragment>
+              <p>No tienes configurado en el momento un Perfil, por favor agrega informacion</p>
+              <Link className='btn btn-primary' to="/create-profile">Agregar Perfil</Link>
+            </Fragment>
+          )}
+      </Fragment>
+    );
 };
 
 const mapStateToProps = state => ({

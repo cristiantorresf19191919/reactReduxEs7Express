@@ -11,13 +11,11 @@ app.use(bodyparser.urlencoded({
 app.use(bodyparser.json());
 const PORT = process.env.PORT || 5000;
 app.get('', (req, res) => {
-
     res.send(`
     <h1>
     your ip address is ${req.headers['x-forwarded-for']
     || req.connection.remoteAddress}
-    </h1>
-    
+    </h1>    
     `);
 });
 // repasando middlewares es6
@@ -41,5 +39,4 @@ app.use('/api/post', require('./routes/api/post'));
 // Colecciones de cleiser
 app.use('/api/usuariosCleiser', require('./routes/api/usuariosCleiser'));
 app.use('/api/productos', require('./routes/api/productos'));
-
 app.listen(PORT, () => console.log(`servidor empezo en el puerto ${PORT}`));
