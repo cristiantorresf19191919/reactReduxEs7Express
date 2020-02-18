@@ -58,7 +58,7 @@ const EditProfile = ({
 		linkedin: loading || !profile.social ? ' ' : profile.social.linkedin,
 		instagram: loading || !profile.social ? ' ' : profile.social.instagram
 	});	
-  }, [loading])
+  }, [loading,getCurrentProfile])
 
   // cambia valores de los inputs
   const onChange = event => {

@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { setAlert } from "./alert";
-import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE, CLEAR_PROFILE,ACCOUNT_DELETED } from "./types";
+import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE, CLEAR_PROFILE,ACCOUNT_DELETED, CLEAR_PROFILES, GET_PROFILES, GET_REPOS } from "./types";
 
 // get current user profile
 export const getCurrentProfile = () => async dispatch =>{
@@ -90,8 +90,8 @@ export const addExperience = (formData, history) => async dispatch => {
 
 export const addEducation = (formData, history) => async dispatch => {
 
-    try {        
-
+    try {   
+        
         const config = {
             headers:{
                 'Content-Type':'application/json'
@@ -175,7 +175,7 @@ export const deleteAccount = () => async dispatch => {
 
     if (window.confirm('Are you sure? this can not be undone')){        
     try {
-        const res = await Axios.delete(`/api/profile/`);
+        
         dispatch({
             type:CLEAR_PROFILE,
         })
@@ -192,4 +192,82 @@ export const deleteAccount = () => async dispatch => {
         error.forEach(error => dispatch(setAlert(error.msg,'danger')));       
     }
     }
+}
+
+// get all profiles
+
+export const getProfiles = () => async dispatch => {
+     try {
+        const res = await Axios.get('/api/profile');
+
+        dispatch({
+            type:GET_PROFILES,
+            payload: res.data
+        })
+         
+     } catch (error) {
+
+         dispatch({
+             type: PROFILE_ERROR,
+             payload: {msg:error.response.statusText, status: error.response.status}
+         })
+     }
+}
+
+// CLEAR PROFILES
+
+export const clearProfiles = async dispatch => {
+    dispatch({type: CLEAR_PROFILES})
+    try {
+        const res = await Axios.get('/api/profile');
+
+        dispatch({
+            type:GET_PROFILES,
+            payload: res.data
+        })
+        
+
+    } catch (error) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg:error.response.statusText, status: error.response.status}
+        })
+    }
+}
+
+// get profile by Id
+export const getProfileById = userId => async dispatch =>{
+    try {
+        const res = await Axios.get(`/api/profile/user/${userId}`);
+        dispatch({
+            type: GET_PROFILE,
+            payload: res.data
+        });
+    } catch (error) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg:error.response.statusText, status: error.response.status}
+        })  
+    }
+}
+
+// get github repo
+
+export const githubRepos = (githubUsername) => async dispatch => {
+    try {
+
+        const res = await Axios.get(`/api/profile/github/${githubUsername}`);
+        dispatch({
+            type: GET_REPOS,
+            payload: res.data
+        })
+
+    } catch (error) {
+         dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg:error.response.statusText, status: error.response.status}
+        })  
+    }
+
+
 }
