@@ -6,8 +6,8 @@ const ProfilesItem = ({profile}) => {
     const {user,status, company, location, skills,_id} = profile;
     if (user){
         var {name, avatar} = user;
+        var idProfile = user._id;
     }
-    const idProfile = user._id
 
     const componente = (
         <div className="profile bg-light">
@@ -34,7 +34,7 @@ const ProfilesItem = ({profile}) => {
 
     const notiene = (
         <div>
-            <b>el perfil con id {_id} no tiene usuario <i class="fas fa-sad-tear"></i></b>
+            <b>el perfil con id {_id} no tiene usuario <i className="fas fa-sad-tear"></i></b>
         </div>
     )
 

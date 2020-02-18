@@ -47,7 +47,7 @@ const Navbar = ({ logOut, auth: { isAuthenticated, loading } }) => {
       </li>
 
       <li>
-        <Link ></Link>
+        
       </li>
     </ul>
   );
@@ -70,7 +70,7 @@ const Navbar = ({ logOut, auth: { isAuthenticated, loading } }) => {
 const mapStateToProps = state => ({ auth: state.auth });
 
 Navbar.propTypes = {
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object,
   isloggedIn: PropTypes.bool
 };
 
