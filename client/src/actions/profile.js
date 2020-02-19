@@ -237,8 +237,8 @@ export const clearProfiles = async dispatch => {
 
 // get profile by Id
 export const getProfileById = userId => async dispatch =>{
-    try {
-        const res = await Axios.get(`/api/profile/user/${userId}`);
+    try {  
+        const res = await Axios.get(`/api/profile/user/${userId}`);    
         dispatch({
             type: GET_PROFILE,
             payload: res.data
@@ -268,6 +268,4 @@ export const githubRepos = (githubUsername) => async dispatch => {
             payload: {msg:error.response.statusText, status: error.response.status}
         })  
     }
-
-
 }
