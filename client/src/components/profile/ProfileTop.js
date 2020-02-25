@@ -2,8 +2,10 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 const ProfileTop = ({profile,profile:{company,status,location,website,social,user}}) => {
+    if (social) {
+        var {youtube,facebook,twitter,instagram,linkedin} = social;
 
-    const {youtube,facebook,twitter,instagram,linkedin} = social;
+    }
     return (
         <Fragment>
         <div className="profile-top bg-primary p-2">
