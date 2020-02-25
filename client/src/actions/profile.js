@@ -244,10 +244,14 @@ export const getProfileById = userId => async dispatch =>{
             payload: res.data
         });
     } catch (error) {
-        dispatch({
-            type: PROFILE_ERROR,
-            payload: {msg:error.response.statusText, status: error.response.status}
-        })  
+        debugger;
+        if (error.response){
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: {msg:error.response.statusText, status: error.response.status}
+            })
+        }
+          
     }
 }
 

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const ProfileTop = ({user,profile,profile:{company,status,location,website}}) => {
+const ProfileTop = ({profile,profile:{company,status,location,website,social,user}}) => {
 
-    const {youtube,facebook,twitter,instagram,linkedin} = profile.social;
+    const {youtube,facebook,twitter,instagram,linkedin} = social;
     return (
         <Fragment>
         <div className="profile-top bg-primary p-2">
