@@ -577,4 +577,20 @@
       padding: 0.3rem 0.4rem;
     }
   }
+
+
+  .contenedor-prueba{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+    border: 1px solid red;
+    padding: 4rem;
+  }
+
+  .contenedor-prueba div{
+    width: 100%;
+    height: 10rem;
+    background-color: lightslategrey;
+    border: 1px solid black;
+  }
   

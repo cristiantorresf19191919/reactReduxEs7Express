@@ -5,6 +5,8 @@ import Spinner from "../layout/Spinner";
 import { getProfileById } from "../../actions/profile";
 import { Link } from "react-router-dom";
 import ProfileTop from "./ProfileTop";
+import ProfileAbout from "./ProfileAbout";
+import ProfileExperience from "./ProfileExperience";
 
 const Profile = ({
   getProfileById,
@@ -14,7 +16,7 @@ const Profile = ({
 }) => {
   useEffect(() => {
     getProfileById(match.params.id);
-  }, []);
+  }, [getProfileById, match.params.id]);
 
   return (
     <Fragment>
@@ -27,9 +29,16 @@ const Profile = ({
             <Link to="/edit-profile" className="btn btn-light"><i className="fas fa-edit"></i> Edit Profile</Link>
             </Fragment> )
          }
-         <div className="profile-grid">
+         <div className="profile-grid my-1">
              <ProfileTop profile={profile} user={auth.user} />
-
+             <ProfileAbout profile={profile}  />\
+             <div className="profile-exp bg-white p-2">
+               <h2 className="text-primary">Experiencia</h2>
+               {profile.experience.map(experience => (
+                 <ProfileExperience key={profile._id} experience={experience} />
+               ))}
+               
+               </div> 
          </div>
 
 

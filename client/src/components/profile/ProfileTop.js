@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const ProfileTop = ({user,profile:{company,status,location,website}}) => {
+const ProfileTop = ({user,profile,profile:{company,status,location,website}}) => {
 
     const {youtube,facebook,twitter,instagram,linkedin} = profile.social;
     return (
@@ -21,6 +21,27 @@ const ProfileTop = ({user,profile:{company,status,location,website}}) => {
                     </a>
                 </span>)
                 }
+                {social && social.twitter && (
+                    <a href={social.twitter} href="noopener noreferrer">
+                        <i className="fab fa-twitter fa-2x"></i>
+                    </a>
+                )}{social && social.facebook && (
+                    <a href={social.facebook} href="noopener noreferrer">
+                        <i className="fab fa-facebook fa-2x"></i>
+                    </a>
+                )}{social && social.linkedin && (
+                    <a href={social.linkedin} href="noopener noreferrer">
+                        <i className="fab fa-linkedin fa-2x"></i>
+                    </a>
+                )}{social && social.youtube && (
+                    <a href={social.youtube} href="noopener noreferrer">
+                        <i className="fab fa-youtube fa-2x"></i>
+                    </a>
+                )}{social && social.instagram && (
+                    <a href={social.instagram} href="noopener noreferrer">
+                        <i className="fab fa-instagram fa-2x"></i>
+                    </a>
+                )}
                 
             </div>
         </div>
