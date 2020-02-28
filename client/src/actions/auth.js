@@ -25,13 +25,13 @@ export const loadUser = () => async dispatch => {
 }
 /* export const load */
 // register user
-export const register = ({name,email,password}) => async dispatch => {
+export const register = ({name,email,password,whatsapp}) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'Application/json'
         }
     }
-    const body = JSON.stringify({name,email,password});
+    const body = JSON.stringify({name,email,password,whatsapp});
     console.log('el body es');
     console.log(body);
     try {

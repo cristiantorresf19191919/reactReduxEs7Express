@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ProfileAbout = ({profile:{bio,skills,user:{name}}}) => {
+const ProfileAbout = ({profile:{bio,skills,user}}) => {
     return (
         <>
         <div className="profile-about bg-light p-2">
             {bio && (
                 <>
-                <h2 className="text-primary">Bio de {name.trim().split(' ')[0]}</h2>
+                <h2 className="text-primary">Bio de {user.name.trim().split(' ')[0]}</h2>
                 <p>{bio}</p>
                 <div className="line"></div>
                 </>

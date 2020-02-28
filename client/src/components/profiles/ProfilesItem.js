@@ -52,8 +52,6 @@ const ProfilesItem = ({profile}) => {
         
     )
 }
-ProfilesItem.propTypes = {
-    profiles: PropTypes.object.isRequired,
-}
+
 
 export default ProfilesItem

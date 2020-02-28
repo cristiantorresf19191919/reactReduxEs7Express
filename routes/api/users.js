@@ -63,7 +63,8 @@ router.post('/', [
    const {
       name,
       email,
-      password
+      password,
+      whatsapp
    } = req.body;
    try {
       // Mirar si el usuario ya existe
@@ -90,8 +91,10 @@ router.post('/', [
          name,
          email,
          avatar,
-         password
+         password,
+         whatsapp
       }
+      
       user = new User(objetoGuardar);
       // Encriptar la contraseña
       const salt = await bcrypt.genSalt(10);
@@ -122,5 +125,22 @@ router.post('/', [
       res.status(500).send('error de servidor');
    }
 });
+
+
+
+
+// @route         GET api/user/remove/:id
+// @desc          Remove Usuario
+// @access        Public
+
+router.get('/remove/:id', async (req,res) => {
+   try {
+      let user = await User.remove({ _id : req.params.id});
+      if (user) res.status(200).send('user deleted');
+      
+   } catch (error) {
+      res.status(500).send(error);
+   }
+})
 
 module.exports = router;
