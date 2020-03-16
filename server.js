@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const connectDB = require('./config/db');
 const bodyparser = require('body-parser');
+const cors = require('cors');
 // conectar base de datos cleiser
 connectDB();
 // middleware bodyparser
@@ -9,6 +10,7 @@ app.use(bodyparser.urlencoded({
     extended: true
 }));
 app.use(bodyparser.json());
+app.use(cors());
 const PORT = process.env.PORT || 5000;
 app.get('', (req, res) => {
     res.send(`
