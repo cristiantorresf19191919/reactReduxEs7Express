@@ -28,7 +28,7 @@ const App = () => {
 	if (localStorage.token){
 		setAuthToken(localStorage.token);
 	}
-
+	
 	useEffect(() =>{
 		store.dispatch(loadUser());
 	},[]);		

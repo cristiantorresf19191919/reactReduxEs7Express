@@ -10,23 +10,16 @@ export const getCurrentProfile = () => async dispatch =>{
         dispatch({
             type: GET_PROFILE,
             payload: res.data
-        })
-
-      
+        })      
     } catch (err) {
         dispatch({
             type: PROFILE_ERROR,
             payload: {msg: err.response.statusText, status: err.response.status}
-        })
-        
+        })        
     }
-
 }
-
 //create or update profile
-
 export const createProfile = (formData, history, edit = false) => async dispatch => {
-
     try {        
         const config = {
             headers:{
