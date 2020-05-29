@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const ProfileTop = ({profile,profile:{company,status,location,website,social,user}}) => {
+const ProfileTop = ({profile:{company,status,location,website,social,user}}) => {
     if (social) {
         var {youtube,facebook,twitter,instagram,linkedin} = social;
 
@@ -55,8 +55,8 @@ const ProfileTop = ({profile,profile:{company,status,location,website,social,use
 }
 
 ProfileTop.propTypes = {
-    user: PropTypes.object.isRequired,
-    profile: PropTypes.array.isRequired,
+
+    profile: PropTypes.object.isRequired,
 
 }
 

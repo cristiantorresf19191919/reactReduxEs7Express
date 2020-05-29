@@ -10,15 +10,16 @@ const Register = ({setAlert, register,isAuthenticated}) => {
         name: '',
         email: '',
         password: '',
+        whatsapp: '',
         password2: '',
     });    
-    const {name, email, password, password2} = formData;     
+    const {name, email, password, password2, whatsapp} = formData;     
     const onSubmit = async event =>  {
         event.preventDefault();
         if (password !== password2){
             setAlert('passwords do not match','danger');
         } else {
-            register({name, email, password});
+            register({name, email, password,whatsapp});
             }           
         }
     
@@ -53,6 +54,15 @@ const Register = ({setAlert, register,isAuthenticated}) => {
                             name="email" />
                         <small className="form-text"
                         >Este sitio usa gravatar, si quieres una foto en tu perfil usa gravatar</small>
+                    </div>
+                    <div className="form-group">
+                        <input 
+                            type="text"
+                            onChange={ e => onChange(e)}
+                            placeholder="Whatsapp"
+                            value={whatsapp}
+                            name="whatsapp"
+                            />
                     </div>
                     <div className="form-group">
                         <input
