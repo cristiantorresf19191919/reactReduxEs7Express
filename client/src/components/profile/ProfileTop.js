@@ -43,6 +43,7 @@ const ProfileTop = ({profile,profile:{company,status,location,website,social,use
                     <a href={social.instagram} href="noopener noreferrer">
                         <i className="fab fa-instagram fa-2x"></i>
                     </a>
+                    // nuevo cambio testing
                 )}
                 
             </div>
