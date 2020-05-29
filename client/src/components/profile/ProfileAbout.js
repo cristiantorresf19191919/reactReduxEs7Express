@@ -5,7 +5,7 @@ const ProfileAbout = ({profile:{bio,skills,user:{name}}}) => {
     return (
         <>
         <div className="profile-about bg-light p-2">
-            {bio && (
+            {bio && name && (
                 <>
                 <h2 className="text-primary">Bio de {name.trim().split(' ')[0]}</h2>
                 <p>{bio}</p>
