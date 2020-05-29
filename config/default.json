@@ -1,6 +1,0 @@
-{
-   "mongoURI": "mongodb://CristianRails:%23Overcome1919a@cluster0-shard-00-00-qt7xl.azure.mongodb.net:27017,cluster0-shard-00-01-qt7xl.azure.mongodb.net:27017,cluster0-shard-00-02-qt7xl.azure.mongodb.net:27017/cleiser?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true",
-   "jwtSecret": "secretTokenScriptEncription",
-   "githubClientId":"72d5590385be79026f19",
-   "githubClientSecret":"14626bc1eea9871d279dab8c8b38942e1f2cadfb"
-}
