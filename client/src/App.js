@@ -19,6 +19,7 @@ import AddExperience from './components/dashboard/profile-form/AddExperience';
 import AddEducation from './components/dashboard/profile-form/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
+import Posts from './components/posts/Posts';
 
 
 
@@ -27,7 +28,7 @@ const App = () => {
 	if (localStorage.token){
 		setAuthToken(localStorage.token);
 	}
-
+	
 	useEffect(() =>{
 		store.dispatch(loadUser());
 	},[]);		
@@ -51,6 +52,7 @@ const App = () => {
 						<PrivateRoute exact path='/add-experience' component={AddExperience} />
 						<PrivateRoute exact path='/add-studies' component={AddEducation} />
 						<PrivateRoute exact path='/edit-profile' component={editProfile} />
+						<PrivateRoute exact path='/posts' component={Posts} />
 						<Route exact path='/profile/:id' component={Profile} />
 
 
