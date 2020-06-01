@@ -3,7 +3,7 @@ import { setAlert } from "./alert";
 import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE, CLEAR_PROFILE,ACCOUNT_DELETED, CLEAR_PROFILES, GET_PROFILES, GET_REPOS } from "./types";
 import { servidor } from "../servidor";
 
-const servidor = "https://cristianscriptsocialnetwork.herokuapp.com" || servidor;
+
 
 // get current user profile
 export const getCurrentProfile = () => async dispatch =>{
