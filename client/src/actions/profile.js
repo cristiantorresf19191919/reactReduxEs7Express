@@ -1,12 +1,15 @@
 import Axios from "axios";
 import { setAlert } from "./alert";
 import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE, CLEAR_PROFILE,ACCOUNT_DELETED, CLEAR_PROFILES, GET_PROFILES, GET_REPOS } from "./types";
+import { servidor } from "../servidor";
+
+const servidor = "https://cristianscriptsocialnetwork.herokuapp.com" || servidor;
 
 // get current user profile
 export const getCurrentProfile = () => async dispatch =>{
 
     try {
-        const res = await Axios.get('/api/profile/me');
+        const res = await Axios.get(servidor+'/api/profile/me');
         dispatch({
             type: GET_PROFILE,
             payload: res.data
@@ -33,7 +36,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
                 'Content-Type':'application/json'
             }
         }
-        const res = await Axios.post('/api/profile',formData,config);
+        const res = await Axios.post(servidor+'/api/profile',formData,config);
         dispatch({
             type:GET_PROFILE,
             payload:res.data
@@ -66,7 +69,7 @@ export const addExperience = (formData, history) => async dispatch => {
                 'Content-Type':'application/json'
             }
         }
-        const res = await Axios.put('/api/profile/experience',formData,config);
+        const res = await Axios.put(servidor+'/api/profile/experience',formData,config);
         dispatch({
             type:UPDATE_PROFILE,
             payload:res.data
@@ -97,7 +100,7 @@ export const addEducation = (formData, history) => async dispatch => {
                 'Content-Type':'application/json'
             }
         }
-        const res = await Axios.put('/api/profile/education',formData,config);
+        const res = await Axios.put(servidor+'/api/profile/education',formData,config);
         dispatch({
             type:UPDATE_PROFILE,
             payload:res.data
@@ -124,7 +127,7 @@ export const addEducation = (formData, history) => async dispatch => {
 export const deleteExperience = id => async dispatch => {
     try {
 
-        const res = await Axios.delete(`/api/profile/experience/${id}`);
+        const res = await Axios.delete(servidor+`/api/profile/experience/${id}`);
 
         dispatch({
             type:UPDATE_PROFILE,
@@ -148,7 +151,7 @@ export const deleteExperience = id => async dispatch => {
 export const deleteEducation = id => async dispatch => {
     try {
 
-        const res = await Axios.delete(`/api/profile/education/${id}`);
+        const res = await Axios.delete(servidor+`/api/profile/education/${id}`);
 
         dispatch({
             type:UPDATE_PROFILE,
@@ -198,18 +201,18 @@ export const deleteAccount = () => async dispatch => {
 
 export const getProfiles = () => async dispatch => {
      try {
-        const res = await Axios.get('/api/profile');
-
+         debugger;
+        const res = await Axios.get(servidor+'/api/profile');
         dispatch({
             type:GET_PROFILES,
             payload: res.data
         })
          
      } catch (error) {
-
+        
          dispatch({
              type: PROFILE_ERROR,
-             payload: {msg:error.response.statusText, status: error.response.status}
+             payload: {msg:error.message, status: "danger"}
          })
      }
 }
@@ -219,7 +222,7 @@ export const getProfiles = () => async dispatch => {
 export const clearProfiles = async dispatch => {
     dispatch({type: CLEAR_PROFILES})
     try {
-        const res = await Axios.get('/api/profile');
+        const res = await Axios.get(servidor+'/api/profile');
 
         dispatch({
             type:GET_PROFILES,
@@ -238,7 +241,7 @@ export const clearProfiles = async dispatch => {
 // get profile by Id
 export const getProfileById = userId => async dispatch =>{
     try {  
-        const res = await Axios.get(`/api/profile/user/${userId}`);    
+        const res = await Axios.get(servidor+`/api/profile/user/${userId}`);    
         dispatch({
             type: GET_PROFILE,
             payload: res.data
@@ -260,7 +263,7 @@ export const getProfileById = userId => async dispatch =>{
 export const githubRepos = (githubUsername) => async dispatch => {
     try {
 
-        const res = await Axios.get(`/api/profile/github/${githubUsername}`);
+        const res = await Axios.get(servidor+`/api/profile/github/${githubUsername}`);
         dispatch({
             type: GET_REPOS,
             payload: res.data
