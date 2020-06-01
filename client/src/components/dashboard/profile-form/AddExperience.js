@@ -31,27 +31,26 @@ const AddExperience = ({addExperience, history}) => {
                 Agrega una Experiencia
                 </h1>
             <p className="lead">
-                <i className="fas fa-code-branch"></i> Add any developer/programming
-                positions that you have had in the past
+                <i className="fas fa-code-branch"></i> Agregue cualquier desarrollador / programación puestos que ha tenido en el pasado
                 </p>
-            <small>* = required field</small>
+            <small>* = campo requerido</small>
             <form className="form" onSubmit={e => {
                 e.preventDefault();
                 addExperience(formData, history);
             }}>
                 <div className="form-group">
                     <b>{title}</b>
-                    <input type="text" placeholder="* Job Title" name="title" value={title} onChange={e => onChange(e)} required />
+                    <input type="text" placeholder="* Título profesional" name="title" value={title} onChange={e => onChange(e)} required />
                 </div>
                 <div className="form-group">
-                    <b>{company}</b>
-                    <input type="text" placeholder="* Company" name="company" value={company} onChange={e => onChange(e)} required />
+           
+                    <input type="text" placeholder="* Empresa" name="company" value={company} onChange={e => onChange(e)} required />
                 </div>
                 <div className="form-group">
-                    <input type="text" placeholder="Location" name="location" value={location} onChange={e => onChange(e)} />
+                    <input type="text" placeholder="Ubicación" name="location" value={location} onChange={e => onChange(e)} />
                 </div>
                 <div className="form-group">
-                    <h4>From Date</h4>
+                    <h4>Fecha inicio</h4>
                     <input value={from} onChange={e => onChange(e)} type="date" name="from" />
                 </div>
                 <div className="form-group">
@@ -60,10 +59,10 @@ const AddExperience = ({addExperience, history}) => {
                             checked={toDateDisable}
                             onChange={e => { setFormData({ ...formData, current: !current }); toggleDisabled(!toDateDisable) }} 
                             type="checkbox"
-                            name="current"/> Current Job</p>
+                            name="current"/> Trabajo actual</p>
                 </div>
                 <div className="form-group">
-                    <h4>To Date</h4>
+                    <h4>Fecha final </h4>
                     <input value={to} onChange={e => onChange(e)} type="date" name="to" disabled = {toDateDisable ? 'disabled' : ''} />
                 </div>
                 <div className="form-group">
@@ -71,15 +70,15 @@ const AddExperience = ({addExperience, history}) => {
                         name="description"
                         cols="30"
                         rows="5"
-                        placeholder="Job Description"
+                        placeholder="Descripción del trabajo"
                         value={description}
                         onChange={e => onChange(e)}
                     ></textarea>
                 </div>
-                <input type="submit" className="btn btn-primary my-1" />
-                <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
+                <input type="submit" className="btn btn-primary my-1" value="Enviar" />
+                <Link className="btn btn-light my-1" to="/dashboard">Regresar</Link>
             </form>
-        <h5>title {title} - company {company} - location {location} - description {description}</h5>
+       
         </Fragment>
     )
 }

@@ -19,6 +19,11 @@ const Navbar = ({ logOut, auth: { isAuthenticated, loading } }) => {
         </Link>
       </li>
       <li>
+        <Link to="/posts">
+          Posts
+        </Link>
+      </li>
+      <li>
         <a onClick={logOut} href="#!">
           <i className="fas fa-sign-out-alt"></i> <span> Cerrar Sesion</span>
         </a>
@@ -42,9 +47,7 @@ const Navbar = ({ logOut, auth: { isAuthenticated, loading } }) => {
         <Link to="/Login">Login</Link>
       </li>
 
-      <li>
-        <Link to="/recovery">PasswordChange</Link>
-      </li>
+
 
       <li>
         

@@ -1,5 +1,8 @@
 node_modules
+node_modules/
 client/node_modules
+client
 CLIENTE
 modificado
-config
+config/default.json
+

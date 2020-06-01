@@ -46,12 +46,12 @@ const Login = ({login, isAuthenticated}) => {
                 <p className="lead"><i className="fas fa-user"></i> Entra a tu cuenta</p>
                 <form className="form" onSubmit={e => onSubmit(e)}>                  
                     <div className="form-group">
-                        <input type="email" onChange={ (e) => onChange(e)} placeholder="Email Address" name="email" />
+                        <input type="email" onChange={ (e) => onChange(e)} placeholder="Correo electrónico" name="email" />
                     </div>
                     <div className="form-group">
                         <input
                             type="password"
-                            placeholder="Password"
+                            placeholder="Contraseña"
                             name="password"
                             minLength="6"
                             onChange={ (e) => onChange(e)}

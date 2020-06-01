@@ -6,9 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "clientinstall": "npm install --prefix client",
-    "dev": "concurrently \"npm run server \" \"npm run client\""
+    "client": "npm start --prefix client"
   },
   "author": "Cristian Torres",
   "license": "MIT",
@@ -23,6 +21,6 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "concurrently": "^4.1.0"
+  
   }
 }

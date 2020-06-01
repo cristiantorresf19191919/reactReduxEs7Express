@@ -23,13 +23,12 @@ const AddEducation = ({addEducation, history}) => {
         <Fragment>
 
             <h1 className="large text-primary">
-                Add Your Education
+            Agrega tu educación
       </h1>
             <p className="lead">
-                <i className="fas fa-graduation-cap"></i> Add any school, bootcamp, etc that
-                you have attended
+                <i className="fas fa-graduation-cap"></i> Agregue cualquier escuela, bootcamp, etc. que has asistido
       </p>
-            <small>* = required field</small>
+            <small>* = campo requerido</small>
             <form className="form" onSubmit={e => {
                 e.preventDefault();
                 addEducation(formData, history)
@@ -40,7 +39,7 @@ const AddEducation = ({addEducation, history}) => {
                         type="text"
                         value={school}
                         onChange = {e => onChange(e)}
-                        placeholder="* School or Bootcamp"
+                        placeholder="* Escuela o campo de entrenamiento"
                         name="school"
                         required
                     />
@@ -48,7 +47,7 @@ const AddEducation = ({addEducation, history}) => {
                 <div className="form-group">
                     <input
                         type="text"
-                        placeholder="* Degree or Certificate"
+                        placeholder="* Licenciatura o Certificado"
                         name="degree"
                         value = {degree}
                         onChange = {e => onChange(e)}
@@ -56,20 +55,20 @@ const AddEducation = ({addEducation, history}) => {
                     />
                 </div>
                 <div className="form-group">
-                    <input type="text" placeholder="Field Of Study" name="fieldofstudy" value={fieldofstudy} onChange={e => onChange(e)} />
+                    <input type="text" placeholder="Campo de estudio" name="fieldofstudy" value={fieldofstudy} onChange={e => onChange(e)} />
                 </div>
                 <div className="form-group">
-                    <h4>From Date</h4>
+                    <h4>Fecha de Inicio</h4>
                     <input type="date" name="from" value={from} onChange={e => onChange(e)}  />
                 </div>
                 <div className="form-group">
                     <p>
-                        <b>current is {current ? <b>current verdadero</b> : <b>current es falso</b>   }</b> <br/>
+                      
                         <input type="checkbox" name="current" value={current} checked={toDateDisabled} onChange={e => {setFormData({...formData, current: !current}); toggleDate(!toDateDisabled)}} /> Current School or Bootcamp
           </p>
                 </div>
                 <div className="form-group">
-                    <h4>To Date</h4>
+                    <h4>Fecha Fin</h4>
                     <input type="date" value={to} onChange={e => onChange(e)} name="to" disabled={toDateDisabled ? 'disabled' : ''} />
                 </div>
                 <div className="form-group">
@@ -77,15 +76,15 @@ const AddEducation = ({addEducation, history}) => {
                         name="description"
                         cols="30"
                         rows="5"
-                        placeholder="Program Description"
+                        placeholder="Descripción del programa"
                         value={description}
                         onChange={e=>{onChange(e)}}
                     ></textarea>
                 </div>
-                <input type="submit" className="btn btn-primary my-1" />
-                <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
+                <input type="submit" className="btn btn-primary my-1" value="Enviar" />
+                <Link className="btn btn-light my-1" to="/dashboard">Regresa</Link>
             </form>
-        <h5>SCHOOL {school} - degree {degree} - fieldof {fieldofstudy} - from {from} - description {description}</h5>
+
         </Fragment>
     )
 }

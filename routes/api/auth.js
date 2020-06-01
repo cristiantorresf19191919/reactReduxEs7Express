@@ -10,7 +10,7 @@ const {
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const db = config.get('jwtSecret');
+const db = process.env.jwtSecret || config.get('jwtSecret');
 // @route         Get api/auth
 // @desc          Get the user authenticated
 // @access        Public

@@ -11,7 +11,7 @@ const gravatar = require('gravatar');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const db = config.get('jwtSecret');
+const db = process.env.jwtSecret;
 
 //ver todos los usuarios
 

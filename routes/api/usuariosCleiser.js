@@ -11,7 +11,7 @@ const gravatar = require('gravatar');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const db = config.get('jwtSecret');
+const db = process.env.jwtSecret;
 // @route         POST api/user
 // @desc          Registrar Usuario
 // @access        Public

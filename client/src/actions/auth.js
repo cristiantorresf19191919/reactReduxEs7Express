@@ -22,6 +22,7 @@ export const loadUser = () => async dispatch => {
         type: AUTH_ERROR
         });        
     }
+
 }
 /* export const load */
 // register user
@@ -70,8 +71,9 @@ export const login = (email, password) => async dispatch => {
         });   
         dispatch(loadUser());      
     } catch (err) {
-        const errors = err.response.data;        
-        dispatch(setAlert(errors.msg,'danger'));      
+        const errors = err.response.data;   
+           
+        dispatch(setAlert("error de autenticacion",'danger'));      
         
         dispatch({
             type:LOGIN_FAILED

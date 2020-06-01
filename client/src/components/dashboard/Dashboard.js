@@ -21,19 +21,43 @@ const Dashboard = ({
     <Spinner />
   ) : (
       <Fragment>
-        <h1 className="large text-primary">Dashboard</h1>
+        <h1 className="large text-primary">Tablero</h1>
         <p className="lead">
-          <i className="fas fa-user"></i> Welcome {user && user.name}
+          <i className="fas fa-user"></i> Bienvenido {user && user.name}
         </p>
         {profile !== null ? (
           <Fragment>
             <DashboardAction />
-            <Experience experience={profile.experience}/>
-            <Education education={profile.education} />
+            {profile.experience.length > 0 ? (
+              <>
+                <Experience experience={profile.experience}/>
+              </>
+            ) : (
+              <>
+              <br/><br/>
+              <h4>No has agregado experiencia</h4>
+              <br/><br/>
+              </>
+            )}   
+
+            {profile.education.length > 0 ? (
+                <>
+                <Education education={profile.education} />
+                </>
+            ) : (
+              <>
+               <br/><br/>
+              <h4>No has agregado Educación </h4>
+              <br/><br/>
+              </>
+
+            )}         
+       
+            
           </Fragment>
         ) : (
             <Fragment>
-              <p>No tienes configurado en el momento un Perfil, por favor agrega informacion</p>
+              <p>No tienes configurado en el momento un Perfil, por favor agrega información </p>
               <Link className='btn btn-primary' to="/create-profile">Agregar Perfil</Link>
             </Fragment>
           )}

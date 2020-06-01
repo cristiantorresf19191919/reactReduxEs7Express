@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const connectDB = require('./config/db');
 const bodyparser = require('body-parser');
-// conectar base de datos cleiser
+
+// conectar base de datos 
 connectDB();
 // middleware bodyparser
 app.use(bodyparser.urlencoded({
@@ -10,14 +11,8 @@ app.use(bodyparser.urlencoded({
 }));
 app.use(bodyparser.json());
 const PORT = process.env.PORT || 5000;
-app.get('', (req, res) => {
-    res.send(`
-    <h1>
-    your ip address is ${req.headers['x-forwarded-for']
-    || req.connection.remoteAddress}
-    </h1>    
-    `);
-});
+// serve static assets in production
+
 // repasando middlewares es6
 const LoggerMiddleware = (req,res,next) =>{
     console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');

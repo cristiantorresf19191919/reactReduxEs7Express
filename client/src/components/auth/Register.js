@@ -37,7 +37,7 @@ const Register = ({setAlert, register,isAuthenticated}) => {
                 <p className="lead"><i className="fas fa-user"></i> Crea tu Cuenta</p>
                 <form className="form" onSubmit={e => onSubmit(e)}>
                     <div className="form-group">
-                        <input type="text" placeholder="Name" 
+                        <input type="text" placeholder="Nombre" 
                             name="name" 
                             value={name}
                             onChange={ (e) => onChange(e) }
@@ -48,16 +48,17 @@ const Register = ({setAlert, register,isAuthenticated}) => {
                         <input 
                             type="email"
                             onChange={ (e) => onChange(e)}  
-                            placeholder="Email Address"
+                            placeholder="Correo electrónico"
                             value = {email}
                             name="email" />
                         <small className="form-text"
                         >Este sitio usa gravatar, si quieres una foto en tu perfil usa gravatar</small>
+                        <a target="_blank" href="https://en.gravatar.com/">Crea tu Gravatar aca</a>
                     </div>
                     <div className="form-group">
                         <input
                             type="password"
-                            placeholder="Password"
+                            placeholder="Contraseña"
                             name="password"
                             minLength="6"
                             onChange={ (e) => onChange(e)}
@@ -66,7 +67,7 @@ const Register = ({setAlert, register,isAuthenticated}) => {
                     <div className="form-group">
                         <input
                             type="password"
-                            placeholder="Confirm Password"
+                            placeholder="Confirmar contraseña"
                             name="password2"
                             minLength="6"
                             onChange={ (e) => onChange(e)}
