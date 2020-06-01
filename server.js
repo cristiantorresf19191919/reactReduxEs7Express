@@ -2,13 +2,14 @@ const express = require('express');
 const app = express();
 const connectDB = require('./config/db');
 const bodyparser = require('body-parser');
-
+const cors = require('cors');
 // conectar base de datos 
 connectDB();
 // middleware bodyparser
 app.use(bodyparser.urlencoded({
     extended: true
 }));
+app.use(cors());
 app.use(bodyparser.json());
 const PORT = process.env.PORT || 5000;
 // serve static assets in production
