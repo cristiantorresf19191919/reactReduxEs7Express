@@ -245,7 +245,7 @@ export const getProfileById = userId => async dispatch =>{
         const res = await Axios.get(servidor+`/api/profile/user/${userId}`);    
         dispatch({
             type: GET_PROFILE,
-            payload: res.data
+            payload: res.data[0]
         });
     } catch (error) {
         debugger;

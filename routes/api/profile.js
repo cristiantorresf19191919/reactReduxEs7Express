@@ -20,7 +20,7 @@ router.get('/user/:user_id', async (req, res) => {
         // el id de cada profile es unico y no tiene nada que ver con la relacion usuario
         // para sacar el profile a partir del usuario debo meter el id del cliente
         // a la propiedad profile.user, en profile.user es donde esta la relacion a los usuarios con los profiles
-        const profile = await Profile.find({
+        const profile = await Profile.findOne({
             user: req.params.user_id
         }).populate('user', ['name', 'avatar']);
         console.log(req.params.user_id);
