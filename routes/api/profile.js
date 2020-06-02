@@ -66,6 +66,18 @@ router.get('/', async (req, res) => {
         res.status(500).send('error en el servidor');
     }
 });
+// @route         get api/Profile
+// @desc          Get all profiles without populate
+// @access        Private
+router.get('/profilesnopopulate', async (req, res) => {
+    try {
+        const profiles = await Profile.find();
+        if (profiles) res.json(profiles);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('error en el servidor');
+    }
+});
 // @route         get api/Profile/me
 // @desc          Get current users profile
 // @access        Private
@@ -113,6 +125,7 @@ router.post('/', [
     } = req.body;
     // build profile object     
     const profileField = {};
+    // la relacion
     profileField.user = req.user.id;
     if (company) profileField.company = company;
     if (website) profileField.website = website;
@@ -155,7 +168,7 @@ router.post('/', [
             });
             return res.status(200).json(profile);
         }
-        // si no esta el documento lo actualiza de una vez
+        // si no esta el documento lo crea de una vez
         if (!profile) console.log('perfil no encontrado voy a crear y a salvar');
         profile = new Profile(profileField)
         await profile.save();
