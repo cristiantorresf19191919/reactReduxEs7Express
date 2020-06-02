@@ -238,7 +238,8 @@ export const clearProfiles = async dispatch => {
     }
 }
 
-// get profile by profile.id
+// get profile by user.id, el servidor busca el profile.user = user.id
+// y popula
 export const getProfileById = userId => async dispatch =>{
     try {  
         const res = await Axios.get(servidor+`/api/profile/user/${userId}`);    
