@@ -42,14 +42,16 @@ router.get('/user/:user_id', async (req, res) => {
         const profile = await Profile.find({
             user: req.params.user_id
         }).populate('user', ['name', 'avatar']);
+        console.log(req.params.user_id);
+        console.log(profile);
         if (!profile) return res.status(404).json({
-            msg: 'Profile not found'
+            msg: 'Profile not found in the try'
         });
         res.json(profile);
     } catch (error) {
         console.error(error);
         if (error.kind === 'ObjectId') return res.status(500).json({
-            msg: 'profile not found'
+            msg: 'profile not found in the catch'
         });
         res.status(500).send('error en el servidor');
     }
