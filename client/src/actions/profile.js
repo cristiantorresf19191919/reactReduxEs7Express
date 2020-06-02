@@ -201,7 +201,7 @@ export const deleteAccount = () => async dispatch => {
 
 export const getProfiles = () => async dispatch => {
      try {
-         debugger;
+         
         const res = await Axios.get(servidor+'/api/profile');
         dispatch({
             type:GET_PROFILES,
@@ -248,7 +248,7 @@ export const getProfileById = userId => async dispatch =>{
             payload: res.data
         });
     } catch (error) {
-        debugger;
+        
         if (error.response){
             dispatch({
                 type: PROFILE_ERROR,

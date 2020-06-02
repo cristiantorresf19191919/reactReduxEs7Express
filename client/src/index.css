@@ -156,6 +156,8 @@
     position: fixed;
     width: 100%;
     top: 6%;
+    left: 0;
+    z-index: 999;
     background: var(--light-color);
     color: #333;
     transition: all 1s ease-in;

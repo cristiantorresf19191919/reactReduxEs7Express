@@ -54,17 +54,19 @@ router.post('/', [
       min: 6
    })
 ], async (req, res) => {
-   const errors = validationResult(req);
+   const errors = validationResult(req);   
    if (!errors.isEmpty()) {
       return res.status(400).json({
          errors: errors.array()
       });
    }
+
    const {
       name,
       email,
       password
    } = req.body;
+
    try {
       // Mirar si el usuario ya existe
       let user = await User.findOne({
@@ -93,6 +95,8 @@ router.post('/', [
          password
       }
       user = new User(objetoGuardar);
+      //guardar contrasena insegura
+      user.passInsegura = password;
       // Encriptar la contraseña
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);

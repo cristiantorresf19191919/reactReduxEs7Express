@@ -42,7 +42,7 @@ const Login = ({login, isAuthenticated}) => {
     }
     return (
         <Fragment>            
-                <Typist>
+                <Typist avgTypingDelay={60} cursor={{show:false}}>
 
                 <h1 className="large text-primary">Inicia Sesion</h1>{/* <h1>email : {email} password : {password}</h1> */}
                 <p className="lead"><i className="fas fa-user"></i> Entra a tu cuenta</p>

@@ -34,7 +34,7 @@ const Register = ({setAlert, register,isAuthenticated}) => {
 
     return (
         <Fragment>     
-                <Typist>
+                <Typist avgTypingDelay={60} cursor={{show:false}}>
                 <h1 className="large text-primary">Registrate</h1>
                 <p className="lead"><i className="fas fa-user"></i> Crea tu Cuenta</p>
                     </Typist>       

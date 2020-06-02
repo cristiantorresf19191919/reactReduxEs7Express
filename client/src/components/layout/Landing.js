@@ -14,7 +14,7 @@ const Landing = ({ isAuthenticated }) => {
       <section className="landing">
         <div className="dark-overlay">
           <div className="landing-inner">
-          <Typist>
+          <Typist avgTypingDelay={40} cursor={{show:false}}>
             <h1 className="x-large">
              CRISTIAN SCRIPT NETWORK
             </h1>
