@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 import PropTypes from 'prop-types';
+import Typist from 'react-typist';
 
 const Register = ({setAlert, register,isAuthenticated}) => {
     const [formData, setFormData] = useState({
@@ -32,9 +33,11 @@ const Register = ({setAlert, register,isAuthenticated}) => {
     }
 
     return (
-        <Fragment>            
+        <Fragment>     
+                <Typist>
                 <h1 className="large text-primary">Registrate</h1>
                 <p className="lead"><i className="fas fa-user"></i> Crea tu Cuenta</p>
+                    </Typist>       
                 <form className="form" onSubmit={e => onSubmit(e)}>
                     <div className="form-group">
                         <input type="text" placeholder="Nombre" 

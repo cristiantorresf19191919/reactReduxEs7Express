@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {login} from '../../actions/auth';
 import PropTypes from 'prop-types';
+import Typist from 'react-typist';
 
 
 const Login = ({login, isAuthenticated}) => {
@@ -41,9 +42,11 @@ const Login = ({login, isAuthenticated}) => {
     }
     return (
         <Fragment>            
-                <h1 className="large text-primary">Inicia Sesion </h1>
-                {/* <h1>email : {email} password : {password}</h1> */}
+                <Typist>
+
+                <h1 className="large text-primary">Inicia Sesion</h1>{/* <h1>email : {email} password : {password}</h1> */}
                 <p className="lead"><i className="fas fa-user"></i> Entra a tu cuenta</p>
+                </Typist>
                 <form className="form" onSubmit={e => onSubmit(e)}>                  
                     <div className="form-group">
                         <input type="email" onChange={ (e) => onChange(e)} placeholder="Correo electrónico" name="email" />
