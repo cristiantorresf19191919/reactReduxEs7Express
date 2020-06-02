@@ -31,6 +31,29 @@ router.get('/user/:user_id', async (req, res) => {
         res.status(500).send('error en el servidor');
     }
 });
+// @route         get api/Profile/user:user_id
+// @desc          Get profile by userId
+// @access        Public
+router.get('/user/:user_id', async (req, res) => {
+    try {
+        // el id de cada profile es unico y no tiene nada que ver con la relacion usuario
+        // para sacar el profile a partir del usuario debo meter el id del cliente
+        // a la propiedad profile.user, en profile.user es donde esta la relacion a los usuarios con los profiles
+        const profile = await Profile.findOne({
+            user: req.params.user_id
+        }).populate('user', ['name', 'avatar']);
+        if (!profile) return res.status(400).json({
+            msg: 'Profile not found'
+        });
+        res.json(profile);
+    } catch (error) {
+        console.error(error);
+        if (error.kind === 'ObjectId') return res.status(400).json({
+            msg: 'profile not found'
+        });
+        res.status(500).send('error en el servidor');
+    }
+});
 // @route         get api/Profile
 // @desc          Get all profile
 // @access        Private

@@ -238,7 +238,7 @@ export const clearProfiles = async dispatch => {
     }
 }
 
-// get profile by Id
+// get profile by profile.id
 export const getProfileById = userId => async dispatch =>{
     try {  
         const res = await Axios.get(servidor+`/api/profile/user/${userId}`);    
@@ -253,10 +253,13 @@ export const getProfileById = userId => async dispatch =>{
                 type: PROFILE_ERROR,
                 payload: {msg:error.response.statusText, status: error.response.status}
             })
+            dispatch(setAlert(error.response.data.msg,"danger"));
         }
           
     }
 }
+
+
 
 // get github repo
 
