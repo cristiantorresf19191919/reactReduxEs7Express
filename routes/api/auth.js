@@ -28,19 +28,10 @@ const optsLocal = {
 
 const passportLocal =  passport.authenticate("local", { session: false });
 
-
-
-
-
-
 const passportJWT = passport.authenticate("jwt", { session: false });
-router.get('/', auth, async (req, res) => {
+router.get('/', passportJWT, async (req, res) => {
    try {
-
-      const user = await User.findById(req.user.id)
-         .select('-password');
-
-      res.status(200).json(user)
+      res.status(200).json(req.user);
    } catch (err) {
       console.error(err.message);
       res.status(500).send('Error de servidor');
