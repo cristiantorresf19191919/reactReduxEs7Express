@@ -29,7 +29,7 @@ const optsLocal = {
 const passportLocal =  passport.authenticate("local", { session: false });
 
 const passportJWT = passport.authenticate("jwt", { session: false });
-router.get('/', passportJWT, async (req, res) => {
+router.get('/', auth, async (req, res) => {
    try {
       res.status(200).json(req.user);
    } catch (err) {
