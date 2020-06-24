@@ -46,7 +46,9 @@ const Navbar = ({ logOut, auth: { isAuthenticated, loading } }) => {
       </li>
 
       <li>
-        <Link to="/Register">Registro</Link>
+        <Link className="focodeatencion" to="/Register">Registro</Link>
+        {/* llamar la atencion al usuario */}
+        <div className="cuadro-attencion"></div>
       </li>
       <li>
         <Link to="/Login">Login</Link>
@@ -61,6 +63,7 @@ const Navbar = ({ logOut, auth: { isAuthenticated, loading } }) => {
   );
   return (
     <div>
+              
       <nav className="navbar bg-dark">
         <h1>
           <Link to="/">

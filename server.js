@@ -3,6 +3,7 @@ const app = express();
 const connectDB = require('./config/db');
 const bodyparser = require('body-parser');
 const cors = require('cors');
+require('./passport');
 // conectar base de datos 
 connectDB();
 // middleware bodyparser
@@ -27,6 +28,22 @@ const LoggerMiddleware = (req,res,next) =>{
 }
 // corriendo la funcion
 app.use(LoggerMiddleware);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Definir Rutas
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));

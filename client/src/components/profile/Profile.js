@@ -20,6 +20,9 @@ const Profile = ({
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
 
+
+  
+
   return (
     <Fragment>
      {profile === null || loading ? (<Spinner/> ): (<Fragment>
@@ -37,7 +40,9 @@ const Profile = ({
              <div className="profile-exp bg-white p-2">
                <h2 className="text-primary">Experiencia</h2>
                {profile.experience && profile.experience.length > 0 ? (
-                 <Fragment>
+                 <Fragment>                 
+
+                  {/* cargar los profiles sin animacion */}
                    {profile.experience.map(experience => (
                      <ProfileExperience key={experience._id} experience={experience} />
                    ))}

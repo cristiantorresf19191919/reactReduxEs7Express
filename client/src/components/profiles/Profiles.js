@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import Spinner from '../layout/Spinner'
 import {getProfiles} from '../../actions/profile';
-import ProfilesItem from './ProfilesItem';
+import LoadProfilesAnimation from '../profile/loadProfilesAnimation';
 
         
 const Profiles = ({getProfiles, profile:{ profiles, loading}}) => {     
@@ -20,10 +20,23 @@ const Profiles = ({getProfiles, profile:{ profiles, loading}}) => {
                 Navega para conectarte con desarrolladores
             </p>
             <div className="profiles">
-                {profiles.length > 0 ? (
+           {/*      {profiles.length > 0 ? (                    
                     profiles.map(prof => (<ProfilesItem  key="prof._id" profile={prof} />))
 
-                ) : (<h4>No hay perfiles :( .....</h4>)}
+                ) : (<h4>No hay perfiles :( .....</h4>)} */}
+
+                    {/* cargando los perfiles con animacion */}
+                {
+                   profiles && profiles.length > 0 ? (
+                        <LoadProfilesAnimation profiles={profiles}  />
+                        
+                    ) : (
+                        <>
+                        <h4>no hay profiles en el momento</h4>
+                        </>
+                    )
+
+                }
             </div>
             </Fragment>}
 

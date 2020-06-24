@@ -6,7 +6,7 @@ const ProfilesItem = ({profile}) => {
     const {user,status, company, location, skills,_id} = profile;
     if (user){
         var {name, avatar} = user;
-        var idProfile = user._id;
+        
     }
 
     const componente = (

@@ -56,7 +56,7 @@ const Register = ({setAlert, register,isAuthenticated}) => {
                             name="email" />
                         <small className="form-text"
                         >Este sitio usa gravatar, si quieres una foto en tu perfil usa gravatar</small>
-                        <a target="_blank" href="https://en.gravatar.com/">Crea tu Gravatar aca</a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://en.gravatar.com/">Crea tu Gravatar aca</a>
                     </div>
                     <div className="form-group">
                         <input

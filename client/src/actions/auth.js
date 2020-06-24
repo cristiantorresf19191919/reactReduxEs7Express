@@ -73,7 +73,7 @@ export const login = (email, password) => async dispatch => {
         });   
         dispatch(loadUser());      
     } catch (err) {
-        const errors = err.response.data;   
+        
            
         dispatch(setAlert("error de autenticacion",'danger'));      
         
